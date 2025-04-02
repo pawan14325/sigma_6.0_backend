@@ -5,12 +5,16 @@ app.post('/login',(req,res)=>{
 res.send('User logged in successfully')
 });
 
-app.get('/',(req,res)=>{
-    if (!req.params.userName || !req.params.id) {
+app.get('/',(req,res)=>{ 
         return res.render('home.ejs');
-    }
-   else{ res.send(`Hello, ${req.params.userName}! Your ID is ${req.params.id}`)}
-})
+    
+ })
+
+ app.get('/rollDice',(req,res)=>{
+    let result=Math.floor(Math.random()*6)+1;
+     res.render('roll_dice.ejs',{result});
+ });
+
 app.listen(8080,()=>{
     console.log(`listening on 8080`);
     
